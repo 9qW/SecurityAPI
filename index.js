@@ -1,3 +1,15 @@
+
+/**
+ * OOKAMICODES
+ * SecurityAPI Bot
+ * By OOKAMICODES
+ * Docs: https://github.com/ookamicodes/securityapi-documentation
+ * 
+ * DO NOT REMOVE ANY SECTION OF THIS HEADER
+ * DO NOT BLIND COPY THE SCRIPTS
+ */
+
+ // Modules
 const SecurityBot = require('./Structures/SecurityBot');
 const config = require('./config.json');
 const Discord = require('discord.js')
@@ -13,7 +25,7 @@ const { utc } = require('moment');
 const os = require('os');
 const ms = require('ms');
 
-//reqsMapsEtc
+// Variables
 const usersMap = new Map();
 const LIMIT = 5;
 const TIME = 10000;
@@ -65,7 +77,7 @@ const flags = {
 	VERIFIED_DEVELOPER: 'Verified Bot Developer'
 };
 
-//status
+//BotStatus
 setInterval(function() {
 
     let statuses = [
@@ -79,7 +91,7 @@ setInterval(function() {
 
 }, 5000)
 
-//hellodmtoOwner
+//HelloIntroductionMessage To GuildOwner
 client.on('guildCreate', (guild) => {
     const embed = new MessageEmbed()
     .setTitle(`SecurityAPI`)
@@ -111,7 +123,7 @@ client.on('guildCreate', (guild) => {
   })
 
 
-//consolelog guild new or left
+//Consolelog new Guild or left Guild
 
 client.on('guildCreate', guild => {
     console.log(`New guild "${guild.name}" |  now on "${client.guilds.cache.size}" servers`)
@@ -123,7 +135,7 @@ client.on('guildDelete', guild => {
 //say
 
 
-//anti spam
+//Anti Spam&Raid
 client.on('message', message => {
     if(message.author.bot) return;
 
@@ -171,7 +183,7 @@ else {
 //
 
 
-
+//AntiSwearWords
 client.on('message', async message => {
     if(message.author.bot) return;
 
@@ -203,10 +215,10 @@ client.on('message', async message => {
     }
 })
 
-//anti ip-logger
+//Anti IP-logger
 client.on('message', async message => {
     if(message.author.bot) return;
-    let blacklisted = ["https://grabify.link/", "https://blasze.com/", "https://www.ps3cfw.com/"];
+    let blacklisted = ["https://grabify.link/", "https://blasze.com/", "https://www.ps3cfw.com/"]; //Array
     let foundInText = false;
     for (var i in blacklisted){
         if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
@@ -214,30 +226,30 @@ client.on('message', async message => {
 
     if (foundInText){
         message.delete();
-        message.channel.send(`**User:** ${message.author.tag} | IP Logger detected!`);
-        console.log(`**User:** "${message.author.tag}" | IP Logger detected! | Server: "${message.guild.name}"`)
+        message.channel.send(`**User:** ${message.author.tag} | IP Logger detected!`); //Message
+        console.log(`**User:** "${message.author.tag}" | IP Logger detected! | Server: "${message.guild.name}"`) //consolelog
 }
 })
 
-//risk ip-logger
+//risk links
 client.on('message', async message => {
     if(message.author.bot) return;
-    let blacklisted = ["http://gestyy.com/", "https://www.bit.ly/", "http://raboninco.com/", "http://bc.vc/", "https://ouo.io/", "https://zzb.bz/", "http://adfoc.us/", "https://bitly.com/", "https://adf.ly/", "https://shorte.st/"];
+    let blacklisted = ["http://gestyy.com/", "https://www.bit.ly/", "http://raboninco.com/", "http://bc.vc/", "https://ouo.io/", "https://zzb.bz/", "http://adfoc.us/", "https://bitly.com/", "https://adf.ly/", "https://shorte.st/"]; //Array
     let foundInText = false;
     for (var i in blacklisted){
         if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
     }
 
     if (foundInText){
-        message.channel.send(`**User:** ${message.author.tag} | High risk for IP-Logger!`);
-        console.log(`**User:** "${message.author.tag}" | High risk for IP-Logger! | Server: "${message.guild.name}"`)
+        message.channel.send(`**User:** ${message.author.tag} | High risk for IP-Logger & unsecure websites`); //Message
+        console.log(`**User:** "${message.author.tag}" | High risk for IP-Logger & unsecure websites! | Server: "${message.guild.name}"`) //consolelog
 }
 })
 
 //risk script
 client.on('message', async message => {
     if(message.author.bot) return;
-    let blacklisted = ["XMLHttpRequest", "XMLHttpRequest.prototype.setRequestHeader", "{method:POST,headers:{authorization:this.headers.Authorization[0],user-agent:navigator.userAgent,Content-Type:application/json}",];
+    let blacklisted = ["XMLHttpRequest", "XMLHttpRequest.prototype.setRequestHeader", "{method:POST,headers:{authorization:this.headers.Authorization[0],user-agent:navigator.userAgent,Content-Type:application/json}",]; //Array
     let foundInText = false;
     for (var i in blacklisted){
         if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
@@ -245,19 +257,8 @@ client.on('message', async message => {
 
     if (foundInText){
         message.delete();
-        message.channel.send(`**User:** ${message.author.tag} | Exploit Script Found! `);
-        console.log(`**User:** "${message.author.tag}" | Exploit Script Found! | Server: "${message.guild.name}"`)
-}
-})
-
-//reportconfig
-client.on('message', async message => {
-    if(message.author.bot) return;
-
-if(message.content === "s!reportconfig") {
-  
-    message.channel.send(`Make a text-channel named #reports. All reports will logged there. Make the channel only for administrators visible.`);
-
+        message.channel.send(`**User:** ${message.author.tag} | Exploit Script Found! `); //Message
+        console.log(`**User:** "${message.author.tag}" | Exploit Script Found! | Server: "${message.guild.name}"`) //consolelog
 }
 })
 
@@ -272,7 +273,7 @@ if(message.content === "s!muteconfig") {
     }
 })
 
-//testscanereact
+//testscanereact |  Preparation for new function
 client.on('message', async message => {
     if(message.author.bot) return;
 if(message.content === "s!test123") {
@@ -284,7 +285,7 @@ if(message.content === "s!test123") {
 client.on('message', async message => {
     if(message.author.bot) return;
 if(message.content === "s!support") {
- message.channel.send('Join our support server!: [...] ')
+ message.channel.send('Join our support server!: [Click Me](https://discord.gg/5sBDQKN) ')
 }
 })
 
@@ -323,44 +324,7 @@ if(message.content === "s!api") {
 
 }
 })
-//specbotinfo
-client.on('message', async message => {
-    if(message.author.bot) return;
-    if(message.content === "s!specinfo") {
-        message.channel.send(`Secure your Server now
 
-
-        **SecurityAPI is an intelligence Discord Bot to secure your server from attacks and other things.**
-        
-        **Security Function:**
-        
-        Anti Spam & Raid can detect spam and will mute member
-        
-        Anti IP-LOGGER can detect IP-LOGGERS and will delete that
-        
-        Anti Exploit Script can detect exploits scripts and will delete these before someone get in danger
-        
-        Anti Swear Words can detect swear words and delete it
-        
-        Anti HTTP Website
-        
-        Report Tools report users on a server
-        
-        Start: s!help s!config
-        
-        **Links**
-        
-        _Bot List: _
-        -https://discordbotlist.com/bots/securityapi
-        -https://botlist.space/bot/748562664200077342
-        -https://ayblisting.com/bots/748562664200077342
-        
-        
-        _Invite_
-        -https://discord.com/api/oauth2/authorize?client_id=748562664200077342&permissions=502787190&scope=bot
-        `)
-    }
-})
 //tos
 client.on('message', async message => {
     if(message.author.bot) return;
@@ -409,7 +373,7 @@ if(message.content === "s!tos") {
 }
 })
 
-//func
+//HelpFunctions
 client.on('message', async message => {
     if(message.author.bot) return;
 if(message.content === "s!function") {
@@ -574,6 +538,7 @@ message.channel.send(invembed);
 console.log(`User ${message.author.tag} used invite command.`)
 }
 })
+
 //serverinfo
 client.on('message', async message => {
     if(message.author.bot) return;
@@ -626,76 +591,8 @@ if(message.content === "s!server") {
 		message.channel.send(embed);
 }
 })
-//userinfo
-client.on('message', async message => {
-    if(message.author.bot) return;
 
-if(message.content === "s!userinfo") {
-    const member = message.mentions.members.last() || message.guild.members.cache.get(target) || message.member;
-    const roles = member.roles.cache
-        .sort((a, b) => b.position - a.position)
-        .map(role => role.toString())
-        .slice(0, -1);
-    const userFlags = member.user.flags.toArray();
-    const embed = new MessageEmbed()
-        .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
-        .setColor(member.displayHexColor || 'BLUE')
-        .addField('User', [
-            `**❯ Username:** ${member.user.username}`,
-            `**❯ Discriminator:** ${member.user.discriminator}`,
-            `**❯ ID:** ${member.id}`,
-            `**❯ Flags:** ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}`,
-            `**❯ Avatar:** [Link to avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
-            `**❯ Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}`,
-            `**❯ Status:** ${member.user.presence.status}`,
-            `**❯ Game:** ${member.user.presence.game || 'Not playing a game.'}`,
-            `\u200b`
-        ])
-        .addField('Member', [
-            `**❯ Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
-            `**❯ Server Join Date:** ${moment(member.joinedAt).format('LL LTS')}`,
-            `**❯ Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
-            `**❯ Roles [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`,
-            `\u200b`
-        ])
-        .addField('Links', [
-            "[Invite me!](https://discord.com/api/oauth2/authorize?client_id=748562664200077342&permissions=8&scope=bot) - [Support Server](https://discord.gg/XsTSfrF) - [Vote for Us!](https://botlist.space/bot/748562664200077342)"
-        ])
-    return message.channel.send(embed);
-}
-})
-//ping
-client.on('message', async message => {
-    if(message.author.bot) return;
 
-if(message.content === "s!ping") {
-    const msg = await message.channel.send('Pinging...');
-
-    const latency = msg.createdTimestamp - message.createdTimestamp;
-    const choices = ['Is this really my ping?', 'Is this okay? I can\'t look!', 'I hope it isn\'t bad!'];
-    const response = choices[Math.floor(Math.random() * choices.length)];
-
-    msg.edit(`${response} - Bot Latency: \`${latency}ms\`, API Latency: \`${Math.round(this.client.ws.ping)}ms\``);
-}
-})
-//uptime
-client.on('message', async message => {
-    if(message.author.bot) return;
-
-if(message.content === "s!up") {
-	message.channel.send(`My uptime is \`${ms(this.client.uptime, { long: true })}\``);
-}
-})
-
-//test
-client.on('message', async message => {
-    if(message.author.bot) return;
-
-if(message.content === "s!ping") {
-    message.channel.send(`🏓 Pong!\nLatency is ${Math.floor(message.createdTimestap - message.createdTimestap)}ms\nAPI Latency is ${Math.round(client.ping)}ms`);
-}
-})
-//msg.edit(`🏓 Pong!\nLatency is ${Math.floor(msg.createdTimestap - message.createdTimestap)}ms\nAPI Latency is ${Math.round(client.ping)}ms`);
 //meme
 client.on('message', async message => {
     if(message.author.bot) return;
